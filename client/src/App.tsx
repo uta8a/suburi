@@ -7,6 +7,11 @@ import { GreeterClient } from "./helloworld/HelloworldServiceClientPb";
 
 const URL = "http://localhost:8080"
 
+interface MessageState {
+  inputText: string;
+  message: string;
+}
+
 const initialState = {
   inputText: "World",
   message: ""
@@ -16,7 +21,7 @@ const App = () => {
   const [
     { inputText, message },
     setState
-  ] = useState(initialState);
+  ] = useState<MessageState>(initialState);
 
   const onClick = () => {
     const request = new HelloRequest();
@@ -27,11 +32,11 @@ const App = () => {
       if (err || ret == null) {
         throw err;
       }
-      setState({ message: ret.getMessage() });
+      setState({ inputText: inputText, message: ret.getMessage() });
     })
   }
   const onChange = ( e:React.ChangeEvent<HTMLInputElement> ) => {
-    setState({ inputText: e.target.value })
+    setState({ inputText: e.target.value, message: message })
   }
   return (
     <div className="App">
