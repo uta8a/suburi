@@ -13,6 +13,6 @@ cd grpc-web
 sudo make install-plugin
 
 npx create-react-app client --template typescript
-
+npm install -D grpc-web
 ```
 
