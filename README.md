@@ -6,4 +6,10 @@
 
 ```
 yay -S protobuf
+
+cd ~/tools
+git clone https://github.com/grpc/grpc-web
+cd grpc-web
+sudo make install-plugin
+
 ```
