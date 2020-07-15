@@ -15,4 +15,4 @@ sudo make install-plugin
 npx create-react-app client --template typescript
 npm install -D grpc-web
 ```
-
+- YAMLはインデント違いで`has unknown fields`みたいなのだしてくるので、まずインデントを疑う
