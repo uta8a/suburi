@@ -1,2 +1,9 @@
 # 素振り
 - golang+grpc+React+envoy+TypeScript
+
+# ref
+- `https://qiita.com/otanu/items/98d553d4b685a8419952`
+
+```
+yay -S protobuf
+```
