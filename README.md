@@ -12,4 +12,7 @@ git clone https://github.com/grpc/grpc-web
 cd grpc-web
 sudo make install-plugin
 
+npx create-react-app client --template typescript
+
 ```
+
