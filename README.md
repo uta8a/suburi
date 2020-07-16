@@ -25,4 +25,4 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 
 # Auth
 - https://qiita.com/arenahito/items/d96e437e5e13ef800ee0 interceptorを使うらしい
-
+ 
