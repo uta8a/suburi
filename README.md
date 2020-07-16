@@ -21,3 +21,6 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 ```
 - CORS理解するか...普段はnginxでリバースプロキシで解決しているので別のやり方(今回はenvoy)でも通用する方法を知りたい
 - Headerが禁止されているので許可してやればよかった
+
+# Auth
+- https://qiita.com/arenahito/items/d96e437e5e13ef800ee0 interceptorを使うらしい
