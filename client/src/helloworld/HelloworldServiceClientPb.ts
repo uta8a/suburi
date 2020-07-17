@@ -75,5 +75,45 @@ export class GreeterClient {
     this.methodInfoSayHello);
   }
 
+  methodInfoTellMeSecret = new grpcWeb.AbstractClientBase.MethodInfo(
+    helloworld_pb.TellMeSecretResponse,
+    (request: helloworld_pb.TellMeSecretRequest) => {
+      return request.serializeBinary();
+    },
+    helloworld_pb.TellMeSecretResponse.deserializeBinary
+  );
+
+  tellMeSecret(
+    request: helloworld_pb.TellMeSecretRequest,
+    metadata: grpcWeb.Metadata | null): Promise<helloworld_pb.TellMeSecretResponse>;
+
+  tellMeSecret(
+    request: helloworld_pb.TellMeSecretRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: helloworld_pb.TellMeSecretResponse) => void): grpcWeb.ClientReadableStream<helloworld_pb.TellMeSecretResponse>;
+
+  tellMeSecret(
+    request: helloworld_pb.TellMeSecretRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.Error,
+               response: helloworld_pb.TellMeSecretResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/helloworld.Greeter/TellMeSecret',
+        request,
+        metadata || {},
+        this.methodInfoTellMeSecret,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/helloworld.Greeter/TellMeSecret',
+    request,
+    metadata || {},
+    this.methodInfoTellMeSecret);
+  }
+
 }
 

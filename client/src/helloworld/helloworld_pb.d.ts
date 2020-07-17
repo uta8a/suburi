@@ -38,3 +38,39 @@ export namespace HelloReply {
   }
 }
 
+export class TellMeSecretRequest extends jspb.Message {
+  getMessage(): string;
+  setMessage(value: string): TellMeSecretRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TellMeSecretRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: TellMeSecretRequest): TellMeSecretRequest.AsObject;
+  static serializeBinaryToWriter(message: TellMeSecretRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TellMeSecretRequest;
+  static deserializeBinaryFromReader(message: TellMeSecretRequest, reader: jspb.BinaryReader): TellMeSecretRequest;
+}
+
+export namespace TellMeSecretRequest {
+  export type AsObject = {
+    message: string,
+  }
+}
+
+export class TellMeSecretResponse extends jspb.Message {
+  getAnswer(): string;
+  setAnswer(value: string): TellMeSecretResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TellMeSecretResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: TellMeSecretResponse): TellMeSecretResponse.AsObject;
+  static serializeBinaryToWriter(message: TellMeSecretResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TellMeSecretResponse;
+  static deserializeBinaryFromReader(message: TellMeSecretResponse, reader: jspb.BinaryReader): TellMeSecretResponse;
+}
+
+export namespace TellMeSecretResponse {
+  export type AsObject = {
+    answer: string,
+  }
+}
+
