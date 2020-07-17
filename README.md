@@ -28,3 +28,4 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 
 # 構想
 - Authとか通知とか分けてマイクロサービス風にする(サーバはひとつだけど、分割でもできるようにしてみたい)
+- gRPCとMicroserviceを学ぶ
