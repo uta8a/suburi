@@ -31,6 +31,8 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 - gRPCとMicroserviceを学ぶ
 
 # Todo List
-- [] https://github.com/arenahito/go-grpc-auth-demo をみながらAuth実装
+- https://github.com/arenahito/go-grpc-auth-demo をみながらAuth実装
 - Authの中身 JWTの勉強
-- go単体で動くようにする
+- :ok: go単体で動くようにする
+- :ok: serverのファイル分離
+- interceptorの実装
