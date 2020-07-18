@@ -1,6 +1,7 @@
 package handler
 
 import (
+  "log"
   "context"
   "google.golang.org/grpc"
   "google.golang.org/grpc/codes"
@@ -50,6 +51,7 @@ func getUser(id string) *User {
 
 func canAccess(method string, user *User) bool {
   r, ok := routes[method]
+  log.Print("Access: %v %v",r,ok)
   if !ok {
     return false
   }
@@ -59,6 +61,7 @@ func canAccess(method string, user *User) bool {
   }
 
   for _, p := range r {
+    log.Print("AccessInternal: %+v %v",permissions, p)
     if !permissions[p] {
       return false
     }
