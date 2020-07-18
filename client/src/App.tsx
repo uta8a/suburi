@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { HelloRequest } from "./helloworld/helloworld_pb";
+import { TellMeSecretRequest } from "./helloworld/helloworld_pb";
 import { GreeterClient } from "./helloworld/HelloworldServiceClientPb";
 
 const URL = "http://localhost:8080"
@@ -13,7 +13,7 @@ interface MessageState {
 }
 
 const initialState = {
-  inputText: "World",
+  inputText: "alice",
   message: ""
 };
 
@@ -24,15 +24,15 @@ const App = () => {
   ] = useState<MessageState>(initialState);
 
   const onClick = () => {
-    const request = new HelloRequest();
-    request.setName(inputText);
+    const request = new TellMeSecretRequest();
+    request.setMessage(inputText);
 
     const client = new GreeterClient(`${URL}`, {}, {});
-    client.sayHello(request, {}, (err, ret) => {
+    client.tellMeSecret(request, {}, (err, ret) => {
       if (err || ret == null) {
         throw err;
       }
-      setState({ inputText: inputText, message: ret.getMessage() });
+      setState({ inputText: inputText, message: ret.getAnswer() });
     })
   }
   const onChange = ( e:React.ChangeEvent<HTMLInputElement> ) => {
