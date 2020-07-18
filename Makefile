@@ -14,3 +14,5 @@ build:
 	(sudo docker-compose build)
 down:
 	(sudo docker-compose down)
+delete:
+	(sudo docker image prune)
