@@ -14,3 +14,4 @@ protoc --proto_path=protocol helloworld.proto \
     --js_out=import_style=commonjs:${CLIENT_OUTDIR} \
     --grpc-web_out=import_style=typescript,mode=grpcwebtext:${CLIENT_OUTDIR} \
     --go_out=plugins=grpc:${SERVER_OUTPUT_DIR}
+sed -i '1i/* eslint-disable */' ${CLIENT_OUTDIR}/helloworld_pb.js
