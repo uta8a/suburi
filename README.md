@@ -38,3 +38,4 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 - interceptorの実装
   - https://github.com/arenahito/go-grpc-auth-demo/blob/master/server/authentication.go
 - Authをきちんとしたものにする
+- https://www.sambaiz.net/article/174/ 参考になりそう
