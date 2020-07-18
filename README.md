@@ -35,7 +35,8 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 - Authの中身 JWTの勉強
 - :ok: go単体で動くようにする
 - :ok: serverのファイル分離
-- interceptorの実装
+- :ok: interceptorの実装
   - https://github.com/arenahito/go-grpc-auth-demo/blob/master/server/authentication.go
 - Authをきちんとしたものにする
+  - Auth Serverを作る
 - https://www.sambaiz.net/article/174/ 参考になりそう
