@@ -48,3 +48,4 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
   - example
 - https://qiita.com/istsh/items/030933950f9fe8c82844
   - これexampleとしてよさそう
+- Refactoring 
