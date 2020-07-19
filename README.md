@@ -40,3 +40,9 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 - Authをきちんとしたものにする
   - Auth Serverを作る
 - https://www.sambaiz.net/article/174/ 参考になりそう
+- SSL/TLSにする https://engineering.linecorp.com/ja/blog/combining-slackbots-into-one-with-grpc/
+  - envoyでリバースプロキシしているからそこでHTTPS確保すればいいんでは
+  - https://kakakakakku.hatenablog.com/entry/2019/12/06/143207
+    - あってそう。server側のHTTPS化は必要ないね
+- https://github.com/harlow/go-micro-services
+  - example
