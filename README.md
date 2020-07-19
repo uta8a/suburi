@@ -49,3 +49,5 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 - https://qiita.com/istsh/items/030933950f9fe8c82844
   - これexampleとしてよさそう
 - Refactoring 
+- https://about.sourcegraph.com/go/grpc-in-production-alan-shreve
+  - Interceptor logging
