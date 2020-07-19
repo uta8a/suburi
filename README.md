@@ -46,3 +46,5 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
     - あってそう。server側のHTTPS化は必要ないね
 - https://github.com/harlow/go-micro-services
   - example
+- https://qiita.com/istsh/items/030933950f9fe8c82844
+  - これexampleとしてよさそう
