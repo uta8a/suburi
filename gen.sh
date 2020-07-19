@@ -1,7 +1,7 @@
 #!/bin/sh
 
-CLIENT_OUTDIR=client/src/user
-SERVER_OUTPUT_DIR=server/user
+CLIENT_OUTDIR=client/src/proto/user
+SERVER_OUTPUT_DIR=server/proto/user
 
 mkdir -p ${CLIENT_OUTDIR} ${SERVER_OUTPUT_DIR}
 
