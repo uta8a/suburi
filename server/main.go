@@ -4,6 +4,7 @@ import (
   "log"
   "net"
   pbUser "github.com/uta8a/suburi/server/proto/user"
+  pbCheck "github.com/uta8a/suburi/server/proto/check"
   handler "github.com/uta8a/suburi/server/handler"
 
   _ "github.com/grpc-ecosystem/go-grpc-middleware"
@@ -28,6 +29,7 @@ func main() {
   }
   server := grpc.NewServer()
   pbUser.RegisterUserServer(server, handler.NewApp(con))
+  pbCheck.RegisterRoutesServer(server, handler.NewApp(con))
   reflection.Register(server)
   if err := server.Serve(lis); err != nil {
     log.Fatalf("failed to serve: %v", err)
