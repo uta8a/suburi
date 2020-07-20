@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+package scoreboard;
+
+option go_package = ".;scoreboard";
