@@ -13,6 +13,6 @@ up:
 build:
 	(sudo docker-compose build)
 down:
-	(sudo docker-compose down)
+	(sudo docker-compose down;sudo docker volume rm $$(sudo docker volume ls -qf dangling=true);sudo docker image prune)
 delete:
 	(sudo docker image prune)
