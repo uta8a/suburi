@@ -16,10 +16,6 @@ import (
   auth "github.com/uta8a/suburi/server/auth"
 )
 
-type app struct {
-  con boil.ContextExecutor
-}
-
 const (
   GetTokenSuccessMessage = "This is your token."
   GetTokenErrorMessage = ""
@@ -29,13 +25,13 @@ const (
   LogoutSuccessMessage = "Logout Success"
 )
 
-func NewApp(con boil.ContextExecutor) *app {
-  return &app{
+func NewApp(con boil.ContextExecutor) *App {
+  return &App{
     con: con,
   }
 }
 
-func (s *app) GetToken(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
+func (s *App) GetToken(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
   // return sample token for debug
   token, err := auth.CreateToken(req.Username)
   if err != nil {
@@ -44,7 +40,7 @@ func (s *app) GetToken(ctx context.Context, req *pbuser.Request) (*pbuser.Result
   }
   return &pbuser.Result{ Token: token, DisplayMessage: GetTokenSuccessMessage }, nil
 }
-func (s *app) Login(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
+func (s *App) Login(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
   // DB? or Auth Server
   con := s.con
   if auth.Verify(ctx, req, con) != true  {
@@ -57,11 +53,11 @@ func (s *app) Login(ctx context.Context, req *pbuser.Request) (*pbuser.Result, e
   }
   return &pbuser.Result{ Token: token, DisplayMessage: LoginSuccessMessage }, nil
 }
-func (s *app) Register(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
+func (s *App) Register(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
   // nearly equal Login
   return &pbuser.Result{ Token: "xxx", DisplayMessage: RegisterSuccessMessage }, nil
 }
-func (s *app) Logout(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
+func (s *App) Logout(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
   // delete token
   return &pbuser.Result{ Token: "xxx", DisplayMessage: LogoutSuccessMessage }, nil
 }
