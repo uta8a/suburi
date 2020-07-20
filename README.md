@@ -5,8 +5,10 @@
 - :ok: check proto file
 - :ok: App external file
 - :ok: authorizationの実装 checkのみ
-- GetToken 発行をする
+- :ok: GetToken 発行をする
 - jwt authenticationをきちんとやる
+  - https://github.com/dgrijalva/jwt-go/blob/master/cmd/jwt/app.go
+    - 参考になりそう
 - login dbとの接続?
 
 # ref
