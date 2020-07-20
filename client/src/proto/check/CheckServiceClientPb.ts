@@ -75,6 +75,46 @@ export class RoutesClient {
     this.methodInfoHealthCheck);
   }
 
+  methodInfoTesterCheck = new grpcWeb.AbstractClientBase.MethodInfo(
+    check_pb.Response,
+    (request: check_pb.Request) => {
+      return request.serializeBinary();
+    },
+    check_pb.Response.deserializeBinary
+  );
+
+  testerCheck(
+    request: check_pb.Request,
+    metadata: grpcWeb.Metadata | null): Promise<check_pb.Response>;
+
+  testerCheck(
+    request: check_pb.Request,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: check_pb.Response) => void): grpcWeb.ClientReadableStream<check_pb.Response>;
+
+  testerCheck(
+    request: check_pb.Request,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.Error,
+               response: check_pb.Response) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/check.Routes/TesterCheck',
+        request,
+        metadata || {},
+        this.methodInfoTesterCheck,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/check.Routes/TesterCheck',
+    request,
+    metadata || {},
+    this.methodInfoTesterCheck);
+  }
+
   methodInfoSecretCheck = new grpcWeb.AbstractClientBase.MethodInfo(
     check_pb.Response,
     (request: check_pb.Request) => {
