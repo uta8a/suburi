@@ -53,7 +53,11 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
   - Interceptor logging
 - /secretへのアクセスで、tokenが必要とする。そこはInterceptorで実装
 - でもこれって少なくともGetTokenをまともに実装しないとじゃないか
-
+- https://daichan.club/container/78908
+  - psqlで参考になった
+- volume削除でsql initが正常に動くことがある
+- https://qiita.com/Shitimi_613/items/bcd6a7f4134e6a8f0621
+  - psql cheetsheet
 
 # 注意
 - :ok: Access secret ENVがないときにエラー出す。token返さないようにする
