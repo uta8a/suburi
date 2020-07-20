@@ -3,9 +3,9 @@ output="server/db"
 add-global-variants=true
 add-panic-variants=true
 [psql]
-  dbname="sampledb"
+  dbname="db"
   host="localhost"
   port=5432
-  user="postgres"
-  pass=""
+  user="master"
+  pass="secret"
   sslmode="disable"
