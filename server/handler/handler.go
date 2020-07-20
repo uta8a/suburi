@@ -33,7 +33,7 @@ func NewApp(con boil.ContextExecutor) *App {
 
 func (s *App) GetToken(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
   // return sample token for debug
-  token, err := auth.CreateToken(req.Username)
+  token, err := auth.CreateToken(req.Username, "player")
   if err != nil {
     log.Printf("GetTokenError: cannot get token %v", err)
     return &pbuser.Result{ Token: "", DisplayMessage: GetTokenErrorMessage }, err
@@ -43,10 +43,11 @@ func (s *App) GetToken(ctx context.Context, req *pbuser.Request) (*pbuser.Result
 func (s *App) Login(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
   // DB? or Auth Server
   con := s.con
-  if auth.Verify(ctx, req, con) != true  {
+  result, usertype := auth.Verify(ctx, req, con)
+  if result != true  {
     return &pbuser.Result{ Token: "", DisplayMessage: LoginErrorMessage }, nil
   }
-  token, err := auth.CreateToken(req.Username)
+  token, err := auth.CreateToken(req.Username, usertype)
   if err != nil {
     log.Printf("LoginError: cannot create token %v", err)
     return &pbuser.Result{ Token: "", DisplayMessage: LoginErrorMessage }, nil

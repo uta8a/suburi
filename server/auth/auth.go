@@ -14,7 +14,7 @@ import (
   "github.com/uta8a/suburi/server/db"
 )
 
-func CreateToken(username string) (string, error) {
+func CreateToken(username string, usertype string) (string, error) {
   
   TokenSecret := os.Getenv("TOKEN_SECRET")
   if TokenSecret == "" {
@@ -23,6 +23,7 @@ func CreateToken(username string) (string, error) {
   //log.Printf("ENV: %s", TokenSecret)
   token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
     "username": username,
+    "usertype": usertype,
     "iat": time.Now().Unix(),
     "exp": time.Now().Add(time.Hour * 24).Unix(),
   })
@@ -33,7 +34,7 @@ func CreateToken(username string) (string, error) {
   return tokenString, nil
 }
 
-func Verify(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) bool {
+func Verify(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) (bool, string) {
   // DB username password_hash
 
   // for dev, raw password
@@ -44,12 +45,13 @@ func Verify(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) 
   userinfo, err := db.Userinfos(db.UserinfoWhere.Username.EQ(username)).One(ctx, con)
   if err != nil {
     log.Printf("Verify db error: %v", err.Error())
-    return false
+    return false, ""
   }
   log.Printf("UserInfo: %+v", userinfo)
   if password_hash != userinfo.PasswordHash {
-    return false
+    return false, ""
   }
-  return true
+  
+  return true, userinfo.UserType
 }
 
