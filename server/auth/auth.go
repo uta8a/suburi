@@ -29,6 +29,7 @@ func CreateToken(username string) (string, error) {
 }
 
 func Verify(req *pbuser.Request) (bool, error) {
+  // DB username password_hash
   
   return true, nil
 }
