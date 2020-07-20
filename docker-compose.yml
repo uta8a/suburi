@@ -13,6 +13,8 @@ services:
     ports:
       - "9090:9090"
     container_name: "server"
+    env_file:
+      - ./server/.env
   client:
     build: ./client
     volumes:
