@@ -60,6 +60,7 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
   - psql cheetsheet
 - SQL Boiler
   - https://ken-aio.github.io/post/2019/04/01/golang-sqlboiler-select/
+- Validationはインターフェース部分でかけるのが筋な気がするので、grpc interceptorに任せる
 
 # 注意
 - :ok: Access secret ENVがないときにエラー出す。token返さないようにする
@@ -67,3 +68,5 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
   - errorを返すようにしたい
 - GetTokenは実装できたので/secretの実装？でもDBをやっておかないとだめだなあ...結局login相当のことを実装する必要がありそう？
   - loginはusername/passwordを投げてTokenを得る。AuthではTokenを投げてinterceptorで許可を受ける
+- go は小文字始まりの関数をExportできない。InitDBのように命名する
+- Executor erじゃないことに気づかず時間溶かした
