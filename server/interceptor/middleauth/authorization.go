@@ -15,14 +15,16 @@ const (
 )
 
 var routes = map[string][]string {
-  "/helloworld.Greeter/Hello": { PermissionHello },
-  "/helloworld.Greeter/TellMeSecret": { PermissionSecret },
+  "/check.Routes/HealthCheck": { PermissionPlayer },
+  "/check.Routes/TesterCheck": { PermissionTester },
+  "/check.Routes/SecretCheck": { PermissionAdmin },
 }
 
-type User struct {
+type Role struct {
   permissions []string
 }
 
+// TODO Subject.usertype
 func AuthorizationUnaryServerInterceptor() grpc.UnaryServerInterceptor {
   return func(
     ctx context.Context,
@@ -30,7 +32,7 @@ func AuthorizationUnaryServerInterceptor() grpc.UnaryServerInterceptor {
     info *grpc.UnaryServerInfo,
     handler grpc.UnaryHandler,
   )(interface{}, error) {
-    if canAccess(info.FullMethod, getUser(GetToken(ctx).Subject)) {
+    if canAccess(info.FullMethod, getRole(GetToken(ctx).Subject)) {
       return handler(ctx, req)
     }
     return nil, status.Error(
@@ -40,16 +42,18 @@ func AuthorizationUnaryServerInterceptor() grpc.UnaryServerInterceptor {
   }
 }
 
-func getUser(id string) *User {
-  switch id {
-  case "alice":
-    return &User{permissions: []string{PermissionHello}}
-  case "bob":
-    return &User{permissions: []string{PermissionHello, PermissionSecret}}
+func getRole(usertype string) *Role {
+  switch usertype {
+  case "player":
+    return &User{permissions: []string{PermissionPlayer}}
+  case "tester":
+    return &User{permissions: []string{PermissionTester}}
+  case "admin":
+    return &User{permissions: []string{PermissionPlayer,PermissionTester, PermissionAdmin}}
   }
   return &User{}
 }
-
+// TODO modify
 func canAccess(method string, user *User) bool {
   r, ok := routes[method]
   log.Print("Access: %v %v",r,ok)
