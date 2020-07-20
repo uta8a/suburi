@@ -75,5 +75,125 @@ export class UserClient {
     this.methodInfoGetToken);
   }
 
+  methodInfoLogin = new grpcWeb.AbstractClientBase.MethodInfo(
+    user_pb.Result,
+    (request: user_pb.Request) => {
+      return request.serializeBinary();
+    },
+    user_pb.Result.deserializeBinary
+  );
+
+  login(
+    request: user_pb.Request,
+    metadata: grpcWeb.Metadata | null): Promise<user_pb.Result>;
+
+  login(
+    request: user_pb.Request,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: user_pb.Result) => void): grpcWeb.ClientReadableStream<user_pb.Result>;
+
+  login(
+    request: user_pb.Request,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.Error,
+               response: user_pb.Result) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/user.User/Login',
+        request,
+        metadata || {},
+        this.methodInfoLogin,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/user.User/Login',
+    request,
+    metadata || {},
+    this.methodInfoLogin);
+  }
+
+  methodInfoRegister = new grpcWeb.AbstractClientBase.MethodInfo(
+    user_pb.Result,
+    (request: user_pb.Request) => {
+      return request.serializeBinary();
+    },
+    user_pb.Result.deserializeBinary
+  );
+
+  register(
+    request: user_pb.Request,
+    metadata: grpcWeb.Metadata | null): Promise<user_pb.Result>;
+
+  register(
+    request: user_pb.Request,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: user_pb.Result) => void): grpcWeb.ClientReadableStream<user_pb.Result>;
+
+  register(
+    request: user_pb.Request,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.Error,
+               response: user_pb.Result) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/user.User/Register',
+        request,
+        metadata || {},
+        this.methodInfoRegister,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/user.User/Register',
+    request,
+    metadata || {},
+    this.methodInfoRegister);
+  }
+
+  methodInfoLogout = new grpcWeb.AbstractClientBase.MethodInfo(
+    user_pb.Result,
+    (request: user_pb.Request) => {
+      return request.serializeBinary();
+    },
+    user_pb.Result.deserializeBinary
+  );
+
+  logout(
+    request: user_pb.Request,
+    metadata: grpcWeb.Metadata | null): Promise<user_pb.Result>;
+
+  logout(
+    request: user_pb.Request,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: user_pb.Result) => void): grpcWeb.ClientReadableStream<user_pb.Result>;
+
+  logout(
+    request: user_pb.Request,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.Error,
+               response: user_pb.Result) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/user.User/Logout',
+        request,
+        metadata || {},
+        this.methodInfoLogout,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/user.User/Logout',
+    request,
+    metadata || {},
+    this.methodInfoLogout);
+  }
+
 }
 

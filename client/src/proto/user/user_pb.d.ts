@@ -28,6 +28,9 @@ export class Result extends jspb.Message {
   getToken(): string;
   setToken(value: string): Result;
 
+  getDisplayMessage(): string;
+  setDisplayMessage(value: string): Result;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Result.AsObject;
   static toObject(includeInstance: boolean, msg: Result): Result.AsObject;
@@ -39,6 +42,7 @@ export class Result extends jspb.Message {
 export namespace Result {
   export type AsObject = {
     token: string,
+    displayMessage: string,
   }
 }
 
