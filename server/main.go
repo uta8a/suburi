@@ -6,9 +6,10 @@ import (
   pbUser "github.com/uta8a/suburi/server/proto/user"
   pbCheck "github.com/uta8a/suburi/server/proto/check"
   handler "github.com/uta8a/suburi/server/handler"
+  middleauth "github.com/uta8a/suburi/server/interceptor/middleauth"
 
-  _ "github.com/grpc-ecosystem/go-grpc-middleware"
-  _ "github.com/grpc-ecosystem/go-grpc-middleware/auth"
+  "github.com/grpc-ecosystem/go-grpc-middleware"
+  "github.com/grpc-ecosystem/go-grpc-middleware/auth"
 
   "google.golang.org/grpc"
   "google.golang.org/grpc/reflection"
@@ -27,7 +28,12 @@ func main() {
   if err != nil {
     log.Fatalf("failed to listen: %v", err)
   }
-  server := grpc.NewServer()
+  server := grpc.NewServer(
+    grpc.UnaryInterceptor(grpc_middleware.ChainUnaryServer(
+      grpc_auth.UnaryServerInterceptor(middleauth.AuthMiddleware),
+      middleauth.AuthorizationUnaryServerInterceptor(),
+    )),
+  )
   pbUser.RegisterUserServer(server, handler.NewApp(con))
   pbCheck.RegisterRoutesServer(server, handler.NewApp(con))
   reflection.Register(server)
