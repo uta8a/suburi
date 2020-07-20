@@ -31,6 +31,8 @@ func NewApp(con boil.ContextExecutor) *App {
   }
 }
 
+// TODO delete GetToken on production (or return nil)
+// for dev
 func (s *App) GetToken(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
   // return sample token for debug
   token, err := auth.CreateToken(req.Username, "player")
