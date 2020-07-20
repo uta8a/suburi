@@ -9,7 +9,7 @@ services:
   server:
     build: ./server
     volumes:
-      - ./server/:/go/src/suzuri/server
+      - ./server/:/go/src/suburi/server
     ports:
       - "9090:9090"
     container_name: "server"
@@ -22,3 +22,12 @@ services:
       - ./client/public:/client/public
     ports:
       - "3000:3000"
+  db:
+    image: postgres:13
+    container_name: "db"
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./db/.env
+    volumes:
+      - ./db/volumes:/docker-entrypoint-initdb.d
