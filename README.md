@@ -3,8 +3,10 @@
 
 # TODO
 - :ok: check proto file
-- App external file
-- authorizationの実装 checkのみでOK
+- :ok: App external file
+- authorizationの実装 checkのみ
+  - jwt authをきちんとやる
+  - dbとの接続?
 
 # ref
 - `https://qiita.com/otanu/items/98d553d4b685a8419952`
