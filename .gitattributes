@@ -1,2 +1,3 @@
-client/src/proto/**/* linguist-documentation
-server/proto/**/* linguist-documentation
+client/src/proto/* linguist-vendored
+server/proto/* linguist-vendored
+ 
