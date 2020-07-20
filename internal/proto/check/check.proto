@@ -6,6 +6,7 @@ option go_package = ".;check";
 
 service Routes {
   rpc HealthCheck (Request) returns (Response);
+  rpc TesterCheck (Request) returns (Response);
   rpc SecretCheck (Request) returns (Response);
 }
 
