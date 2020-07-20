@@ -4,9 +4,14 @@ import (
   "time"
   "log"
   "os"
-  _ "context"
+  "context"
+
   "github.com/dgrijalva/jwt-go"
+  _ "golang.org/x/crypto/argon2"
+  "github.com/volatiletech/sqlboiler/v4/boil"
+
   pbuser "github.com/uta8a/suburi/server/proto/user"
+  "github.com/uta8a/suburi/server/db"
 )
 
 func CreateToken(username string) (string, error) {
@@ -28,9 +33,23 @@ func CreateToken(username string) (string, error) {
   return tokenString, nil
 }
 
-func Verify(req *pbuser.Request) (bool, error) {
+func Verify(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) bool {
   // DB username password_hash
+
+  // for dev, raw password
+  // password_hash := hash(req.password)
+  password_hash := req.Password
+  username := req.Username
   
-  return true, nil
+  userinfo, err := db.Userinfos(db.UserinfoWhere.Username.EQ(username)).One(ctx, con)
+  if err != nil {
+    log.Printf("Verify db error: %v", err.Error())
+    return false
+  }
+  log.Printf("UserInfo: %+v", userinfo)
+  if password_hash != userinfo.PasswordHash {
+    return false
+  }
+  return true
 }
 

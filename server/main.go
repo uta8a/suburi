@@ -18,12 +18,16 @@ const (
 )
 
 func main() {
+  con,err := handler.InitDB()
+  if err != nil {
+    log.Fatalf("failed to connect to DB: %v", err)
+  }
   lis, err := net.Listen("tcp", port)
   if err != nil {
     log.Fatalf("failed to listen: %v", err)
   }
   server := grpc.NewServer()
-  pbUser.RegisterUserServer(server, handler.NewApp())
+  pbUser.RegisterUserServer(server, handler.NewApp(con))
   reflection.Register(server)
   if err := server.Serve(lis); err != nil {
     log.Fatalf("failed to serve: %v", err)
