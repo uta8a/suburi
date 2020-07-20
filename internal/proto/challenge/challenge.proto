@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+package challenge;
+
+option go_package = ".;challenge";
