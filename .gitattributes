@@ -1,2 +1,2 @@
-client/src/proto/* linguist-vendored
-server/proto/* linguist-vendored
+client/src/proto/**/* linguist-vendored
+server/proto/**/* linguist-vendored
