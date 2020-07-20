@@ -58,6 +58,8 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 - volume削除でsql initが正常に動くことがある
 - https://qiita.com/Shitimi_613/items/bcd6a7f4134e6a8f0621
   - psql cheetsheet
+- SQL Boiler
+  - https://ken-aio.github.io/post/2019/04/01/golang-sqlboiler-select/
 
 # 注意
 - :ok: Access secret ENVがないときにエラー出す。token返さないようにする
