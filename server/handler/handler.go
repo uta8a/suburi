@@ -3,7 +3,9 @@ package handler
 import (
   "context"
   _ "fmt"
+  "log"
   pbuser "github.com/uta8a/suburi/server/proto/user"
+  auth "github.com/uta8a/suburi/server/auth"
 )
 
 type app struct {}
@@ -22,7 +24,12 @@ func NewApp() *app {
 
 func (s *app) GetToken(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
   // return sample token for debug
-  return &pbuser.Result{ Token: "xxx", DisplayMessage: GetTokenSuccessMessage }, nil
+  token, err := auth.CreateToken(req.Username)
+  if err != nil {
+    log.Fatalf("GetTokenError: cannot get token %v", err)
+    return &pbuser.Result{ Token: "", DisplayMessage: GetTokenErrorMessage }, err
+  }
+  return &pbuser.Result{ Token: token, DisplayMessage: GetTokenSuccessMessage }, nil
 }
 func (s *app) Login(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
   // DB? or Auth Server
