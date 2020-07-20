@@ -61,6 +61,9 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 - SQL Boiler
   - https://ken-aio.github.io/post/2019/04/01/golang-sqlboiler-select/
 - Validationはインターフェース部分でかけるのが筋な気がするので、grpc interceptorに任せる
+- interceptor
+  - auth
+  - validate
 
 # 注意
 - :ok: Access secret ENVがないときにエラー出す。token返さないようにする
