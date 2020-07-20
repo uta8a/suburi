@@ -53,3 +53,7 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
   - Interceptor logging
 - /secretへのアクセスで、tokenが必要とする。そこはInterceptorで実装
 - でもこれって少なくともGetTokenをまともに実装しないとじゃないか
+
+
+# 注意
+- Access secret ENVがないときにエラー出す。token返さないようにする
