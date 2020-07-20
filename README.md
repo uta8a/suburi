@@ -56,4 +56,8 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 
 
 # 注意
-- Access secret ENVがないときにエラー出す。token返さないようにする
+- :ok: Access secret ENVがないときにエラー出す。token返さないようにする
+  - エラーは出した。
+  - errorを返すようにしたい
+- GetTokenは実装できたので/secretの実装？でもDBをやっておかないとだめだなあ...結局login相当のことを実装する必要がありそう？
+  - loginはusername/passwordを投げてTokenを得る。AuthではTokenを投げてinterceptorで許可を受ける
