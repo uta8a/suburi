@@ -1,4 +1,4 @@
-package handler
+package auth
 
 import (
   "time"
@@ -6,7 +6,7 @@ import (
   "os"
   "context"
 
-  "github.com/dgrijalva/jwt-go"
+  jwt "github.com/dgrijalva/jwt-go"
   _ "golang.org/x/crypto/argon2"
   "github.com/volatiletech/sqlboiler/v4/boil"
 
@@ -21,11 +21,13 @@ func CreateToken(username string, usertype string) (string, error) {
     log.Fatal("Env is not set")
   }
   //log.Printf("ENV: %s", TokenSecret)
-  token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-    "username": username,
-    "usertype": usertype,
-    "iat": time.Now().Unix(),
-    "exp": time.Now().Add(time.Hour * 24).Unix(),
+  token := jwt.NewWithClaims(jwt.SigningMethodHS256, UserClaims{
+    username,
+    usertype,
+    jwt.StandardClaims {
+      IssuedAt: time.Now().Unix(),
+      ExpiresAt: time.Now().Add(time.Hour * 24).Unix(),
+    },
   })
   tokenString, err := token.SignedString([]byte(TokenSecret))
   if err != nil {
@@ -37,6 +39,7 @@ func CreateToken(username string, usertype string) (string, error) {
 func Verify(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) (bool, string) {
   // DB username password_hash
 
+  // TODO argon2 verify
   // for dev, raw password
   // password_hash := hash(req.password)
   password_hash := req.Password
