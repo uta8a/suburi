@@ -51,3 +51,5 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 - Refactoring 
 - https://about.sourcegraph.com/go/grpc-in-production-alan-shreve
   - Interceptor logging
+- /secretへのアクセスで、tokenが必要とする。そこはInterceptorで実装
+- でもこれって少なくともGetTokenをまともに実装しないとじゃないか
