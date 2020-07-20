@@ -3,3 +3,17 @@ syntax = "proto3";
 package check;
 
 option go_package = ".;check";
+
+service Routes {
+  rpc HealthCheck (Request) returns (Response);
+  rpc SecretCheck (Request) returns (Response);
+}
+
+message Request {
+  string none = 1;
+}
+
+message Response {
+  string display_message = 1;
+}
+
