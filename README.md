@@ -1,6 +1,11 @@
 # 素振り
 - golang+grpc+React+envoy+TypeScript
 
+# TODO
+- :ok: check proto file
+- App external file
+- authorizationの実装 checkのみでOK
+
 # ref
 - `https://qiita.com/otanu/items/98d553d4b685a8419952`
 
@@ -30,7 +35,7 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 - Authとか通知とか分けてマイクロサービス風にする(サーバはひとつだけど、分割でもできるようにしてみたい)
 - gRPCとMicroserviceを学ぶ
 
-# Todo List
+# NOTE
 - https://github.com/arenahito/go-grpc-auth-demo をみながらAuth実装
 - Authの中身 JWTの勉強
 - :ok: go単体で動くようにする
@@ -69,7 +74,8 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 - :ok: Access secret ENVがないときにエラー出す。token返さないようにする
   - エラーは出した。
   - errorを返すようにしたい
-- GetTokenは実装できたので/secretの実装？でもDBをやっておかないとだめだなあ...結局login相当のことを実装する必要がありそう？
+- :ok: GetTokenは実装できたので/secretの実装？でもDBをやっておかないとだめだなあ...結局login相当のことを実装する必要がありそう？
   - loginはusername/passwordを投げてTokenを得る。AuthではTokenを投げてinterceptorで許可を受ける
 - go は小文字始まりの関数をExportできない。InitDBのように命名する
 - Executor erじゃないことに気づかず時間溶かした
+- grpcはmain.goのRegisterと、handler/の実際の中身の実装が必要
