@@ -4,9 +4,10 @@
 # TODO
 - :ok: check proto file
 - :ok: App external file
-- authorizationの実装 checkのみ
-  - jwt authをきちんとやる
-  - dbとの接続?
+- :ok: authorizationの実装 checkのみ
+- GetToken 発行をする
+- jwt authenticationをきちんとやる
+- login dbとの接続?
 
 # ref
 - `https://qiita.com/otanu/items/98d553d4b685a8419952`
@@ -71,7 +72,8 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 - interceptor
   - auth
   - validate
-
+- https://stackoverflow.com/questions/5258977/are-http-headers-case-sensitive
+  - HTTP Headerはcase-Incensitiveらしい。
 # 注意
 - :ok: Access secret ENVがないときにエラー出す。token返さないようにする
   - エラーは出した。
