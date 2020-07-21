@@ -10,11 +10,12 @@
   - https://github.com/dgrijalva/jwt-go/blob/master/cmd/jwt/app.go
     - 参考になりそう
 - :ok: login dbとの接続?
+- Register実装
 
 # Bug
 - :fixed: user.Login で正しいUsernameとPasswordを入れるとpanic
   - ctxをInterceptorで返していなかった
-- Authorizationが機能していない。tokenつきでアクセスしても入れない(Invalid signature)
+- :fixed: Authorizationが機能していない。tokenつきでアクセスしても入れない(Invalid signature)
 
 # ref
 - `https://qiita.com/otanu/items/98d553d4b685a8419952`
