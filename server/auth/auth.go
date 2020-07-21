@@ -36,6 +36,7 @@ func CreateToken(username string, usertype string) (string, error) {
   return tokenString, nil
 }
 
+// for login
 func Verify(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) (bool, string) {
   // DB username password_hash
 
@@ -58,3 +59,8 @@ func Verify(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) 
   return true, userinfo.UserType
 }
 
+// for register
+// usertype, error
+// func Register(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) (string, error) {
+  // userinfo := db.UserInfo
+// } 

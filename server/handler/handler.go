@@ -58,6 +58,7 @@ func (s *App) Login(ctx context.Context, req *pbuser.Request) (*pbuser.Result, e
 }
 func (s *App) Register(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
   // nearly equal Login
+  // 
   return &pbuser.Result{ Token: "xxx", DisplayMessage: RegisterSuccessMessage }, nil
 }
 func (s *App) Logout(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
