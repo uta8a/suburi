@@ -8,7 +8,6 @@ import (
   "errors"
 
   jwt "github.com/dgrijalva/jwt-go"
-  _ "golang.org/x/crypto/argon2"
   "github.com/volatiletech/sqlboiler/v4/boil"
 
   pbuser "github.com/uta8a/suburi/server/proto/user"
@@ -39,11 +38,6 @@ func CreateToken(username string, usertype string) (string, error) {
 
 // for login
 func Verify(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) (bool, string) {
-  // DB username password_hash
-
-  // TODO argon2 verify
-  // for dev, raw password
-  // password_hash := hash(req.password)
   password := req.Password
   username := req.Username
   userinfo, err := db.Userinfos(db.UserinfoWhere.Username.EQ(username)).One(ctx, con)
@@ -64,12 +58,11 @@ func Verify(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) 
   return true, userinfo.UserType
 }
 
-// TODO
 // for register
 // usertype, error
 func Register(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) (string, error) {
   username := req.Username
-  // TODO already exists or not
+  // already exists or not
   ok, err := db.Userinfos(db.UserinfoWhere.Username.EQ(username)).Exists(ctx, con)
   if err != nil {
     log.Printf("Register: DB error %v", err)
@@ -79,7 +72,7 @@ func Register(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor
     log.Printf("Already Exists name")
     return "", errors.New("This Username is already exists.")
   }
-  // TODO make hash
+  // make hash
   password_hash,err := GenerateFromPassword(req.Password)
   if err != nil {
     log.Printf("Register: Password_Hash generate error %v", err)
