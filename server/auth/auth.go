@@ -5,6 +5,7 @@ import (
   "log"
   "os"
   "context"
+  "errors"
 
   jwt "github.com/dgrijalva/jwt-go"
   _ "golang.org/x/crypto/argon2"
@@ -43,27 +44,51 @@ func Verify(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) 
   // TODO argon2 verify
   // for dev, raw password
   // password_hash := hash(req.password)
-  password_hash := req.Password
+  password := req.Password
   username := req.Username
-  log.Printf("user:pass = %s:%s", username, password_hash)
   userinfo, err := db.Userinfos(db.UserinfoWhere.Username.EQ(username)).One(ctx, con)
   if err != nil {
     log.Printf("Verify db error: %v", err.Error())
     return false, ""
   }
   log.Printf("UserInfo: %+v", userinfo)
-  if password_hash != userinfo.PasswordHash {
+  ok,err := ComparePasswordAndHash(password, userinfo.PasswordHash)
+  if err != nil {
+    log.Printf("ComparePasswordAndHash Error: %v", err)
     return false, ""
   }
-  
+  if ok != true {
+    log.Printf("Password not match")
+    return false, ""
+  }
   return true, userinfo.UserType
 }
 
+// TODO
 // for register
 // usertype, error
 func Register(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) (string, error) {
-  userinfo := db.Userinfo{ ID: 1, Username: req.Username, PasswordHash: req.Password, UserType: "player" }
-  err := userinfo.Insert(ctx, con, boil.Blacklist("id"))
+  username := req.Username
+  // TODO already exists or not
+  ok, err := db.Userinfos(db.UserinfoWhere.Username.EQ(username)).Exists(ctx, con)
+  if err != nil {
+    log.Printf("Register: DB error %v", err)
+    return "", errors.New("Internal error")
+  }
+  if ok {
+    log.Printf("Already Exists name")
+    return "", errors.New("This Username is already exists.")
+  }
+  // TODO make hash
+  password_hash,err := GenerateFromPassword(req.Password)
+  if err != nil {
+    log.Printf("Register: Password_Hash generate error %v", err)
+    return "", errors.New("Internal Error")
+  }
+
+  // register
+  userinfo := db.Userinfo{ ID: 1, Username: req.Username, PasswordHash: password_hash, UserType: "player" }
+  err = userinfo.Insert(ctx, con, boil.Blacklist("id"))
   if err != nil {
     log.Printf("Register error: %v", err.Error())
     return "", err
