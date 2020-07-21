@@ -122,8 +122,8 @@ type userinfoL struct{}
 
 var (
 	userinfoAllColumns            = []string{"id", "username", "password_hash", "user_type"}
-	userinfoColumnsWithoutDefault = []string{"id", "username", "password_hash", "user_type"}
-	userinfoColumnsWithDefault    = []string{}
+	userinfoColumnsWithoutDefault = []string{"username", "password_hash", "user_type"}
+	userinfoColumnsWithDefault    = []string{"id"}
 	userinfoPrimaryKeyColumns     = []string{"id"}
 )
 
