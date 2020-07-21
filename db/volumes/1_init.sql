@@ -1,3 +1,5 @@
+drop table if exists userinfo;
+
 CREATE TABLE userinfo (
   id SERIAL NOT NULL,
   username varchar(30) NOT NULL,
