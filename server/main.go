@@ -9,7 +9,6 @@ import (
   middleauth "github.com/uta8a/suburi/server/interceptor/middleauth"
 
   "github.com/grpc-ecosystem/go-grpc-middleware"
-  "github.com/grpc-ecosystem/go-grpc-middleware/auth"
 
   "google.golang.org/grpc"
   "google.golang.org/grpc/reflection"
@@ -29,10 +28,10 @@ func main() {
     log.Fatalf("failed to listen: %v", err)
   }
   server := grpc.NewServer(
-    grpc.UnaryInterceptor(grpc_middleware.ChainUnaryServer(
-      grpc_auth.UnaryServerInterceptor(middleauth.AuthMiddleware),
-      middleauth.AuthorizationUnaryServerInterceptor(),
-    )),
+    grpc_middleware.WithUnaryServerChain(
+      middleauth.AuthenticationUnaryServerInterceptor(middleauth.ApiAuth()),
+      //middleauth.AuthorizationUnaryServerInterceptor(),
+    ),
   )
   pbUser.RegisterUserServer(server, handler.NewApp(con))
   pbCheck.RegisterRoutesServer(server, handler.NewApp(con))
