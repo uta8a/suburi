@@ -22,6 +22,7 @@ const (
   LoginSuccessMessage = "Login Success"
   LoginErrorMessage = "Login Failed"
   RegisterSuccessMessage = "Register Success"
+  RegisterErrorMessage= "Register Failed"
   LogoutSuccessMessage = "Logout Success"
 )
 
@@ -58,8 +59,18 @@ func (s *App) Login(ctx context.Context, req *pbuser.Request) (*pbuser.Result, e
 }
 func (s *App) Register(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
   // nearly equal Login
-  // 
-  return &pbuser.Result{ Token: "xxx", DisplayMessage: RegisterSuccessMessage }, nil
+  con := s.con
+  usertype, err := auth.Register(ctx, req, con)
+  if err != nil {
+    log.Printf("RegisterError: db error %v", err)
+    return &pbuser.Result{ Token: "", DisplayMessage: RegisterErrorMessage }, nil
+  }
+  token, err := auth.CreateToken(req.Username, usertype)
+  if err != nil {
+    log.Printf("RegisterError: cannot create token %v", err)
+    return &pbuser.Result{ Token: "", DisplayMessage: RegisterErrorMessage }, nil
+  }
+  return &pbuser.Result{ Token: token, DisplayMessage: RegisterSuccessMessage }, nil
 }
 func (s *App) Logout(ctx context.Context, req *pbuser.Request) (*pbuser.Result, error) {
   // delete token

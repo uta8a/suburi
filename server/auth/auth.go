@@ -61,6 +61,12 @@ func Verify(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) 
 
 // for register
 // usertype, error
-// func Register(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) (string, error) {
-  // userinfo := db.UserInfo
-// } 
+func Register(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) (string, error) {
+  userinfo := db.Userinfo{ ID: 1, Username: req.Username, PasswordHash: req.Password, UserType: "player" }
+  err := userinfo.Insert(ctx, con, boil.Blacklist("id"))
+  if err != nil {
+    log.Printf("Register error: %v", err.Error())
+    return "", err
+  }
+  return "player", nil
+}
