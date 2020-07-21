@@ -15,7 +15,7 @@ const (
 	PermissionPlayer = "PLAYER"
 )
 
-var routes = map[string][]string {
+var authzRoutes = map[string][]string {
   "/check.Routes/HealthCheck": { PermissionPlayer },
   "/check.Routes/TesterCheck": { PermissionTester },
   "/check.Routes/SecretCheck": { PermissionAdmin },
@@ -25,7 +25,6 @@ type Role struct {
   permissions []string
 }
 
-// TODO Subject.usertype
 func AuthorizationUnaryServerInterceptor() grpc.UnaryServerInterceptor {
   key := os.Getenv("TOKEN_SECRET")
   if key == "" {
@@ -37,12 +36,12 @@ func AuthorizationUnaryServerInterceptor() grpc.UnaryServerInterceptor {
     info *grpc.UnaryServerInfo,
     handler grpc.UnaryHandler,
   )(interface{}, error) {
-    log.Printf("Username: %+v", GetToken(ctx, key).Username)
-    log.Printf("Usertype: %+v", GetToken(ctx, key).Usertype)
-    if _, ok := routes[info.FullMethod]; ok != true {
+    if _, ok := authzRoutes[info.FullMethod]; ok != true {
       return handler(ctx, req)
     }
-    if canAccess(info.FullMethod, getRole(GetToken(ctx, key).Usertype)) {
+    log.Printf("Username: %v", GetTokenString(ctx, key))
+    log.Printf("Usertype: %+v", GetTokenString(ctx, key).Usertype)
+    if canAccess(info.FullMethod, getRole(GetTokenString(ctx, key).Usertype)) {
       return handler(ctx, req)
     }
     return nil, status.Error(
@@ -63,9 +62,8 @@ func getRole(usertype string) *Role {
   }
   return &Role{}
 }
-// TODO modify
 func canAccess(method string, role *Role) bool {
-  r, ok := routes[method]
+  r, ok := authzRoutes[method]
   log.Printf("Access: %v %v",r,ok)
   if !ok {
     return false
