@@ -44,7 +44,7 @@ func Verify(ctx context.Context, req *pbuser.Request, con boil.ContextExecutor) 
   // password_hash := hash(req.password)
   password_hash := req.Password
   username := req.Username
-  
+  log.Printf("user:pass = %s:%s", username, password_hash)
   userinfo, err := db.Userinfos(db.UserinfoWhere.Username.EQ(username)).One(ctx, con)
   if err != nil {
     log.Printf("Verify db error: %v", err.Error())
