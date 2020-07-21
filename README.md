@@ -97,3 +97,4 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 - HS256なら256bit, 32文字以上でないとだめ
   - ref. https://auth0.com/blog/jp-a-look-at-the-latest-draft-for-jwt-bcp/
 - GroupでAdminとTesterを管理する？ホワイトリストでブロックする
+- boil.infer()に、boil.Blacklist("id")のように指定すればOK
