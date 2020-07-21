@@ -15,6 +15,7 @@
 ```
 # internal/proto/check
 /healthcheck
+/tester (tester and admin only)
 /secret (admin only checker)
 # internal/proto/id
 /user
@@ -26,3 +27,4 @@
 /challenge#[challenge-name] ?
 ```
 - めんどくさいので、teamでひとつのアカウントにしてもらう(まずは簡単に)
+- :ok: check
