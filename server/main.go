@@ -30,7 +30,7 @@ func main() {
   server := grpc.NewServer(
     grpc_middleware.WithUnaryServerChain(
       middleauth.AuthenticationUnaryServerInterceptor(middleauth.ApiAuth()),
-      //middleauth.AuthorizationUnaryServerInterceptor(),
+      middleauth.AuthorizationUnaryServerInterceptor(),
     ),
   )
   pbUser.RegisterUserServer(server, handler.NewApp(con))
