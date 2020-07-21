@@ -9,7 +9,12 @@
 - jwt authenticationをきちんとやる
   - https://github.com/dgrijalva/jwt-go/blob/master/cmd/jwt/app.go
     - 参考になりそう
-- login dbとの接続?
+- :ok: login dbとの接続?
+
+# Bug
+- :fixed: user.Login で正しいUsernameとPasswordを入れるとpanic
+  - ctxをInterceptorで返していなかった
+- Authorizationが機能していない。tokenつきでアクセスしても入れない(Invalid signature)
 
 # ref
 - `https://qiita.com/otanu/items/98d553d4b685a8419952`
@@ -76,6 +81,9 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
   - validate
 - https://stackoverflow.com/questions/5258977/are-http-headers-case-sensitive
   - HTTP Headerはcase-Incensitiveらしい。
+- frontend iframe postMessage embedded crossorigin  
+  - https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
+  - これやってみたいけど、普通にCookie+hash routerで実装したほうがいいような気がする
 # 注意
 - :ok: Access secret ENVがないときにエラー出す。token返さないようにする
   - エラーは出した。
@@ -85,3 +93,6 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 - go は小文字始まりの関数をExportできない。InitDBのように命名する
 - Executor erじゃないことに気づかず時間溶かした
 - grpcはmain.goのRegisterと、handler/の実際の中身の実装が必要
+- HS256なら256bit, 32文字以上でないとだめ
+  - ref. https://auth0.com/blog/jp-a-look-at-the-latest-draft-for-jwt-bcp/
+- GroupでAdminとTesterを管理する？ホワイトリストでブロックする
