@@ -54,7 +54,7 @@ func AuthenticationUnaryServerInterceptor(authFunc AuthFunc) grpc.UnaryServerInt
     return res, nil
   }
 }
-
+// TODO Refactoring
 func AuthMiddleware(ctx context.Context) (context.Context, error) {
   key := os.Getenv("TOKEN_SECRET")
   if key == "" {
@@ -99,7 +99,6 @@ func AuthMiddleware(ctx context.Context) (context.Context, error) {
     }
   }
   log.Printf("TokenString: %v", tokenString)
-  // TODO demo, so skip signature
   parser := new(jwt.Parser)
   parsedToken, _, err := parser.ParseUnverified(token, &auth.UserClaims{})
   if err != nil {
