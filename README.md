@@ -6,11 +6,13 @@
 - :ok: App external file
 - :ok: authorizationの実装 checkのみ
 - :ok: GetToken 発行をする
-- jwt authenticationをきちんとやる
+- :ok: jwt authenticationをきちんとやる
   - https://github.com/dgrijalva/jwt-go/blob/master/cmd/jwt/app.go
     - 参考になりそう
 - :ok: login dbとの接続?
-- Register実装
+- :ok: Register実装
+- logoutの実装
+- フロントエンドのjwtの取扱、ログインページの作成
 
 # Bug
 - :fixed: user.Login で正しいUsernameとPasswordを入れるとpanic
