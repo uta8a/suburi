@@ -1,0 +1,52 @@
+import React, { useState } from "react";
+import { URL, CTF_NAME } from "../../util/global";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+
+const Header = () => {
+  const headerComponentStyle = "text-gray-400 font-light mx-4 hover:underline";
+  return (
+    <header>
+      <nav className="bg-gray-800 shadow-sm">
+        <div className="container flex justify-between items-center mx-auto px-6 py-4">
+          <div>
+            <Link to="/" className="text-xl text-white">
+              {CTF_NAME}
+            </Link>
+          </div>
+          <div>
+            <Link to="/notification" className={headerComponentStyle}>
+              Notification
+            </Link>
+            <Link to="/about" className={headerComponentStyle}>
+              About
+            </Link>
+            <Link to="/rule" className={headerComponentStyle}>
+              Rules
+            </Link>
+            <Link to="/scoreboard" className={headerComponentStyle}>
+              Scoreboard
+            </Link>
+            <Link to="/challenge" className={headerComponentStyle}>
+              Challenge
+            </Link>
+            {/* TODO islogin ? hidden : show */}
+            <Link
+              to="/login"
+              className={headerComponentStyle}
+            >
+              Login
+            </Link>
+            <Link
+              to="/register"
+              className={headerComponentStyle}
+            >
+              Register
+            </Link>
+          </div>
+        </div>
+      </nav>
+    </header>
+  );
+};
+
+export { Header };
