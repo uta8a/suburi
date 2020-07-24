@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Request } from './proto/user/user_pb';
 import { UserClient } from './proto/user/UserServiceClientPb';
-
-// TODO normal gRPC
-
-const URL = 'http://localhost:8080'
+import useSWR from 'swr';
+import { URL } from './util/global'
+import { Login } from './components/Login'
+import { AllRoute } from './components/AllRoute'
+import { AllSwitch } from './components/AllSwitch'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 interface ioState {
   // input
@@ -30,16 +32,22 @@ const App = () => {
       throw err;
     });
   }
+  const fetcher = () => {
+    const request = new Request();
+    request.setUsername("");
+    request.setPassword("");
+    const client = new UserClient(`${URL}`, {}, {});
+    const ret = client.getToken(request, null).catch(err => {
+      throw err;
+    });
+    return ret;
+  }
+  const { data }= useSWR('/getToken', fetcher)
   return (
-    <div className="App">
-      {/* grpc */}
-      <button onClick={onChange}>
-        Get Token!!
-      </button>
-      <h1>{token}</h1>
-      <h2>{message}</h2>
-      <p>{11111}</p>
-    </div>
+    <Router>
+      <AllRoute />
+      <AllSwitch />
+    </Router>
   );
 }
 
