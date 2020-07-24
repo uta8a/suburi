@@ -19,9 +19,11 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "swr": "^0.2.3",
+    "tailwindcss": "^1.5.2",
     "typescript": "^3.7.5"
   },
   "scripts": {
+     "build:tailwind": "tailwindcss build src/tailwind.css -o src/tailwind.output.css",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
