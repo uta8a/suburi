@@ -13,6 +13,8 @@
 - :ok: Register実装
 - logoutの実装
 - フロントエンドのjwtの取扱、ログインページの作成
+- サーバから情報を読み込むまでローディング待機の仕組みを理解したい
+
 
 # Bug
 - :fixed: user.Login で正しいUsernameとPasswordを入れるとpanic
@@ -87,6 +89,8 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
 - frontend iframe postMessage embedded crossorigin  
   - https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
   - これやってみたいけど、普通にCookie+hash routerで実装したほうがいいような気がする
+- https://daveceddia.com/tailwind-create-react-app/
+  - tailwind + react
 # 注意
 - :ok: Access secret ENVがないときにエラー出す。token返さないようにする
   - エラーは出した。
