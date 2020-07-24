@@ -104,3 +104,13 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
   - ref. https://auth0.com/blog/jp-a-look-at-the-latest-draft-for-jwt-bcp/
 - GroupでAdminとTesterを管理する？ホワイトリストでブロックする
 - boil.infer()に、boil.Blacklist("id")のように指定すればOK
+```
+// good
+<Router>
+  <Route>
+</Router>
+// bad (not rendering)
+<Router>
+  <Link>
+</Router>
+```
