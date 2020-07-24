@@ -1,3 +1,9 @@
+```
+npm i @types/google-protobuf
+npm i google-protobuf
+npm i grpc-web
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
