@@ -1,11 +1,12 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { Login } from "./Login";
+import {Home} from './Home'
 
 const AllSwitch = () => {
   return (
     <Switch>
-      <Route exact path="/" component={Page} />
+      <Route exact path="/" component={Home} />
       <Route exact path="/user-check" component={Page} />
       <Route exact path="/tester-check" component={Page} />
       <Route exact path="/admin-check" component={Page} />
