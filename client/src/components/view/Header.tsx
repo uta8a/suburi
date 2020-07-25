@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { URL, CTF_NAME } from "../../util/global";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import React from "react";
+import { CTF_NAME } from "../../util/global";
+import { Link } from "react-router-dom";
 
 const Header = () => {
-  const headerComponentStyle = "text-gray-400 font-light mx-4 hover:underline";
+  const headerComponentStyle = "text-gray-100 font-light mx-4 hover:underline";
   return (
     <header>
       <nav className="bg-gray-800 shadow-sm">
@@ -30,16 +30,10 @@ const Header = () => {
               Challenge
             </Link>
             {/* TODO islogin ? hidden : show */}
-            <Link
-              to="/login"
-              className={headerComponentStyle}
-            >
+            <Link to="/login" className={headerComponentStyle}>
               Login
             </Link>
-            <Link
-              to="/register"
-              className={headerComponentStyle}
-            >
+            <Link to="/register" className={headerComponentStyle}>
               Register
             </Link>
           </div>
