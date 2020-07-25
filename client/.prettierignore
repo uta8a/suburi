@@ -1,3 +1,4 @@
 *.css
-./src/proto/
+src/proto/**/*.js
+src/proto/**/*.ts
 

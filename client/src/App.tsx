@@ -8,6 +8,7 @@ import { AllRoute } from "./components/AllRoute";
 import { AllSwitch } from "./components/AllSwitch";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Header } from "./components/view/Header";
+import { Footer } from "./components/view/Footer";
 
 interface ioState {
   // input
@@ -44,11 +45,18 @@ const App = () => {
     return ret;
   };
   const { data } = useSWR("/getToken", fetcher);
+  const appStyle = "flex flex-col min-h-screen bg-gray-900";
+  const mainStyle = "flex-grow";
   return (
-    <Router>
-      <Header />
-      <AllSwitch />
-    </Router>
+    <div className={appStyle}>
+      <Router>
+        <Header />
+        <main className={mainStyle}>
+          <AllSwitch />
+        </main>
+        <Footer />
+      </Router>
+    </div>
   );
 };
 
