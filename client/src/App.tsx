@@ -45,8 +45,8 @@ const App = () => {
     return ret;
   };
   const { data } = useSWR("/getToken", fetcher);
-  const appStyle = "flex flex-col min-h-screen bg-gray-900";
-  const mainStyle = "flex-grow";
+  const appStyle = "flex flex-col h-screen bg-gray-900";
+  const mainStyle = "flex-grow h-full";
   return (
     <div className={appStyle}>
       <Router>
