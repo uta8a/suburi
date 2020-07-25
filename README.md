@@ -104,6 +104,7 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
   - ref. https://auth0.com/blog/jp-a-look-at-the-latest-draft-for-jwt-bcp/
 - GroupでAdminとTesterを管理する？ホワイトリストでブロックする
 - boil.infer()に、boil.Blacklist("id")のように指定すればOK
+- 親の方でRouter噛ませていたら、子ではRouterを噛ませてはいけない。
 ```
 // good
 <Router>
@@ -114,3 +115,6 @@ Request header field x-user-agent is not allowed by Access-Control-Allow-Headers
   <Link>
 </Router>
 ```
+- https://tailwindcomponents.com/
+  - https://tailwindcomponents.com/component/laravel-preset login
+  - tailwindcss の例
