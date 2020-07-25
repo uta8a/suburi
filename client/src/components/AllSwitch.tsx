@@ -1,7 +1,9 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { Login } from "./Login";
-import {Home} from './Home'
+import { Home } from "./Home";
+import { Notification } from "./Notification";
+import { About } from "./About";
 
 const AllSwitch = () => {
   return (
@@ -13,6 +15,8 @@ const AllSwitch = () => {
       <Route exact path="/get-token" component={Page} /> {/* for debug */}
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Page} />
+      <Route exact path="/notification" component={Notification} />
+      <Route exact path="/about" component={About} />
     </Switch>
   );
 };
