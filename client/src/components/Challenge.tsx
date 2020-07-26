@@ -11,7 +11,7 @@ const Card = () => {
     attachment: "file",
   };
   return (
-    <div className="w-1/2 px-2 py-2">
+    <div className="w-1/2 px-2 py-2 relative">
       <div className="modal-open relative bg-yellow-200 border-l-4 border-yellow-500 text-orange-900 text-xl p-4 w-full">
         <div className="">
           <h1 className="font-bold">{info.title}</h1>
@@ -26,7 +26,7 @@ const Card = () => {
           <div className="text-base pl-10">{info.solves} solves</div>
         </div>
       </div>
-      <div className="modal invisible absolute">
+      <div className="modal hidden absolute top-0">
         <div className="">{info.title}</div>
         <div className="">{info.score} pts</div>
         <div className="">{info.solves} solves</div>
@@ -42,7 +42,117 @@ const Challenge = () => {
   return (
     <>
       <Title>Challenge</Title>
-      <div className="flex flex-row flex-wrap pt-6 mx-10">
+      <div className="flex flex-row py-6 mx-10 flex-wrap">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
         <Card />
         <Card />
         <Card />
