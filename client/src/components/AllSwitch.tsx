@@ -7,6 +7,7 @@ import { About } from "./About";
 import { Rules } from "./Rules";
 import { Scoreboard } from "./Scoreboard";
 import { Challenge } from "./Challenge";
+import { Register } from "./Register";
 
 const AllSwitch = () => {
   return (
@@ -17,7 +18,7 @@ const AllSwitch = () => {
       <Route exact path="/admin-check" component={Page} />
       <Route exact path="/get-token" component={Page} /> {/* for debug */}
       <Route exact path="/login" component={Login} />
-      <Route exact path="/register" component={Page} />
+      <Route exact path="/register" component={Register} />
       <Route exact path="/notifications" component={Notifications} />
       <Route exact path="/about" component={About} />
       <Route exact path="/rules" component={Rules} />
