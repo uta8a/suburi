@@ -4,7 +4,7 @@ import { CTF_NAME, CTF_ADMIN_NAME, CTF_ADMIN_LINK } from "../../util/global";
 const Footer = () => {
   return (
     <footer className="bg-gray-800">
-      <p className="p-2 text-white text-center text-base">
+      <p className="p-2 text-white text-center text-sm">
         {CTF_NAME} is made by{" "}
         <a
           className="hover:underline"
