@@ -14,13 +14,13 @@ const Header = () => {
             </Link>
           </div>
           <div>
-            <Link to="/notification" className={headerComponentStyle}>
-              Notification
+            <Link to="/notifications" className={headerComponentStyle}>
+              Notifications
             </Link>
             <Link to="/about" className={headerComponentStyle}>
               About
             </Link>
-            <Link to="/rule" className={headerComponentStyle}>
+            <Link to="/rules" className={headerComponentStyle}>
               Rules
             </Link>
             <Link to="/scoreboard" className={headerComponentStyle}>
