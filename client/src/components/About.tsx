@@ -1,9 +1,6 @@
 import React from "react";
 import { CTF_NAME, CTF_ADMIN_NAME, CTF_ADMIN_LINK } from "../util/global";
-
-const Title = () => {
-  return <h1 className="text-center pt-6 text-white text-3xl">About</h1>;
-};
+import { Title } from "./view/Title";
 
 const Description = () => {
   const staffStyle = "text-center pt-3 text-white text-xl";
@@ -35,7 +32,7 @@ const Description = () => {
 const About = () => {
   return (
     <>
-      <Title />
+      <Title>About</Title>
       <Description />
     </>
   );
