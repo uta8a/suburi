@@ -7,7 +7,7 @@ npm i grpc-web
 - 仮でViewを作りきって、そこにfuncを足す形でやる。そもそもボタンがなかったりすると厳しいので。
 - Timerはサーバから時間をとってきてやることにする
   - https://github.com/tsg-ut/ctfd-theme-tsgctf/blob/487d28b026b52fcedec117f4c898111d791a78ed/pages/index.vue#L30
-- TSGの真似をする。
+  - TSGの真似をする。
 ```
 # /
 # /user-check
@@ -21,3 +21,5 @@ npm i grpc-web
 ```
 - https://www.tailwindtoolbox.com/components/fullscreen-modal 
   - modal window -> challenge 
+- overflow-scroll 
+  - toppageかどうか判定してscrollしない(スクロールバーを表示しない)ようにする
