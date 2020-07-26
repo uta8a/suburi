@@ -4,7 +4,9 @@ import { Login } from "./Login";
 import { Home } from "./Home";
 import { Notifications } from "./Notifications";
 import { About } from "./About";
-import { Rules } from './Rules'
+import { Rules } from "./Rules";
+import { Scoreboard } from "./Scoreboard";
+import { Challenge } from "./Challenge";
 
 const AllSwitch = () => {
   return (
@@ -19,6 +21,8 @@ const AllSwitch = () => {
       <Route exact path="/notifications" component={Notifications} />
       <Route exact path="/about" component={About} />
       <Route exact path="/rules" component={Rules} />
+      <Route exact path="/scoreboard" component={Scoreboard} />
+      <Route exact path="/challenge" component={Challenge} />
     </Switch>
   );
 };
