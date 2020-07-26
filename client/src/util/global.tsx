@@ -7,12 +7,12 @@ const CTF_SUBTITLE = () => {
   return (
     <>
       🚩🚩🚩 これは試験的に行われます。フィードバックは
-      <a className="bg-green-500 rounded-md underline" href="#">
+      <a className="bg-gray-700 hover:bg-gray-600" href="#">
         こちら
       </a>
       からお願いします。 🚩🚩🚩
     </>
   );
 };
-
-export { URL, CTF_NAME, CTF_ADMIN_NAME, CTF_ADMIN_LINK, CTF_SUBTITLE };
+const FLAG_FORMAT = 'Erily{THIS_IS_FLAG}'
+export { URL, CTF_NAME, CTF_ADMIN_NAME, CTF_ADMIN_LINK, CTF_SUBTITLE, FLAG_FORMAT };
