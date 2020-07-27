@@ -21,7 +21,9 @@ npm i grpc-web
   - TSGの真似をする。
 - challenge modal windowを作る: https://www.tailwindtoolbox.com/components/fullscreen-modal 
   - modal window -> challenge 
-- overflow-scroll のページごとの制御
-  - toppageかどうか判定してscrollしない(スクロールバーを表示しない)ようにする
+
+# DONE
 - :ok: Titleの変更 タイトルのキャプチャ
   - useEffect & useLocation でいけた
+- :ok: overflow-scroll のページごとの制御
+  - toppageかどうか判定してscrollしない(スクロールバーを表示しない)ようにする
