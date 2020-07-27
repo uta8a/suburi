@@ -23,4 +23,5 @@ npm i grpc-web
   - modal window -> challenge 
 - overflow-scroll のページごとの制御
   - toppageかどうか判定してscrollしない(スクロールバーを表示しない)ようにする
-- Titleの変更 タイトルのキャプチャ
+- :ok: Titleの変更 タイトルのキャプチャ
+  - useEffect & useLocation でいけた
