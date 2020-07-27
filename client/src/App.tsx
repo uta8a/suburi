@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Request } from "./proto/user/user_pb";
 import { UserClient } from "./proto/user/UserServiceClientPb";
 import useSWR from "swr";
@@ -6,7 +6,7 @@ import { URL } from "./util/global";
 import { Login } from "./components/Login";
 import { AllRoute } from "./components/AllRoute";
 import { AllSwitch } from "./components/AllSwitch";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import { Header } from "./components/view/Header";
 import { Footer } from "./components/view/Footer";
 
@@ -45,15 +45,13 @@ const App = () => {
     return ret;
   };
   const { data } = useSWR("/getToken", fetcher);
+
   const appStyle = "flex flex-col h-screen bg-gray-900 overflow-hidden";
-  const mainStyle = "flex-grow h-full overflow-y-scroll";
   return (
     <div className={appStyle}>
       <Router>
         <Header />
-        <main className={mainStyle}>
-          <AllSwitch />
-        </main>
+        <AllSwitch />
         <Footer />
       </Router>
     </div>
