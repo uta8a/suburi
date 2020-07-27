@@ -1,5 +1,5 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { useState, useEffect,Props } from "react";
+import { Switch, Route,useLocation } from "react-router-dom";
 import { Login } from "./Login";
 import { Home } from "./Home";
 import { Notifications } from "./Notifications";
@@ -8,8 +8,15 @@ import { Rules } from "./Rules";
 import { Scoreboard } from "./Scoreboard";
 import { Challenge } from "./Challenge";
 import { Register } from "./Register";
-
+import { CTF_NAME } from '../util/global'
+const pathToTitle = (path:string) => {
+  return path.charAt(1).toUpperCase() + path.slice(2)
+}
 const AllSwitch = () => {
+  let location = useLocation()
+  useEffect(() => {
+    document.title = `${pathToTitle(location.pathname)} ${location.pathname === "/" ? "" : "|"} ${CTF_NAME}` 
+  }, [location])
   return (
     <Switch>
       <Route exact path="/" component={Home} />
