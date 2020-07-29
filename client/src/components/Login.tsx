@@ -2,26 +2,26 @@ import React, { useState } from "react";
 import { Request } from "../proto/user/user_pb";
 import { UserClient } from "../proto/user/UserServiceClientPb";
 import useSWR from "swr";
+import { Title } from './view/Title'
 
 const LoginForm = () => {
   return (
     <div className="flex items-center justify-center mt-16 mx-6">
       <div className="p-6 max-w-sm w-full bg-gray-800 shadow rounded-md">
-        <h3 className="text-white text-xl text-center">Login</h3>
-        <form className="mt-4">
-          <label className="block" htmlFor="username">
-            <span className="text-white text-sm">Username</span>
+        <div className="">
+          <label className="block" htmlFor="email">
+            <span className="text-white text-base">Email</span>
             <input
               className="form-input py-2 px-3 mt-1 block w-full rounded-md bg-gray-800 border-2 border-yellow-500 text-white focus:border-yellow-200 focus:outline-none"
-              id="username"
+              id="email"
               type="text"
-              placeholder="^[A-Za-z0-9][A-Za-z0-9_-]{0,50}$"
+              placeholder=""
               autoComplete="off"
             />
           </label>
 
           <label className="block mt-3" htmlFor="password">
-            <span className="text-white text-sm">Password</span>
+            <span className="text-white text-base">Password</span>
             <input
               className="form-input mt-1 px-2 py-3 block w-full rounded-md bg-gray-800 border-2 border-yellow-500 text-white focus:border-yellow-200 focus:outline-none"
               id="password"
@@ -29,7 +29,7 @@ const LoginForm = () => {
               name="password"
               required
               autoComplete="off"
-              placeholder="******** (8 <= chars <= 50)"
+              placeholder=""
             />
           </label>
           <div className="flex items-center justify-between mt-4">
@@ -48,7 +48,7 @@ const LoginForm = () => {
               Login
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
@@ -58,6 +58,7 @@ const Login = () => {
   return (
     <div className="Login">
       {/* login form */}
+      <Title>Login</Title>
       <LoginForm />
     </div>
   );
