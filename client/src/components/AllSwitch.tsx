@@ -14,12 +14,13 @@ const pathToTitle = (path: string) => {
 };
 const AllSwitch = () => {
   const noScrollPath = ["/", "/about", "/rules", "/login", "/register"];
+  const allPath = ["/notifications", "/about", "/rules", "/scoreboard", "/challenge", "/login", "/register"]
   let location = useLocation();
   let mainStyle = "flex-grow h-full";
   useEffect(() => {
-    document.title = `${pathToTitle(location.pathname)} ${
-      location.pathname === "/" ? "" : "|"
-    } ${CTF_NAME}`;
+    document.title = `${
+      allPath.includes(location.pathname) ? pathToTitle(location.pathname) + " | " : ""
+    }${CTF_NAME}`;
   }, [location]);
   return (
     <main
