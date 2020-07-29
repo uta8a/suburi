@@ -17,9 +17,9 @@
 /healthcheck
 /tester (tester and admin only)
 /secret (admin only checker)
-# internal/proto/id
-/user
-/user/[id]
+# internal/proto/id # ページに対するAPI UserはLogin関連になる
+/team
+/team/[id]
 # internal/proto/scoreboard
 /scoreboard
 # internal/proto/challenge
