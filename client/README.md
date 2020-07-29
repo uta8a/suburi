@@ -21,6 +21,8 @@ npm i grpc-web
   - TSGの真似をする。
 - challenge modal windowを作る: https://www.tailwindtoolbox.com/components/fullscreen-modal 
   - modal window -> challenge 
+- Loginを作る
+- Registerを作る
 
 # DONE
 - :ok: Titleの変更 タイトルのキャプチャ
